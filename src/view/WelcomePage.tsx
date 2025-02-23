@@ -13,7 +13,7 @@ const WelcomePage: React.FC = () => {
             <header className="w-full flex justify-between items-center px-8 py-4 bg-white shadow-md fixed top-0">
                 {/* Logo and Title */}
                 <div className="flex items-center space-x-3">
-                    <img src="/logo.jpg" alt="Logo" className="h-15 w-14" />
+                    <img src="src/assets/logo.png" alt="Logo" className="h-15 w-14" />
                     <h1 className="text-4xl font-bold text-blue-800">Paw Care.</h1>
                 </div>
 
