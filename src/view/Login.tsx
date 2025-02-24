@@ -44,8 +44,7 @@ const Login: React.FC = () => {
 
 
     return (
-        <div
-            className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-teal-100 overflow-hidden">
+        <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-teal-100 overflow-hidden">
             {/* Background animation */}
             <div className="absolute inset-0 bg-gradient-to-r from-teal-300 to-blue-300 opacity-30 blur-3xl animate-pulse"></div>
             <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg flex w-full max-w-3xl">
