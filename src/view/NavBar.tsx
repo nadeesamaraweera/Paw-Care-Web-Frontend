@@ -1,5 +1,5 @@
 import React from "react";
-import {Navbar, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, NavbarBrand} from "@nextui-org/react";
+import { Navbar, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, NavbarBrand, NavbarMenuToggle } from "@nextui-org/react";
 import { User } from "@nextui-org/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +9,7 @@ function NavBar() {
     const navigate = useNavigate();
 
     const menuItems = [
-        { name: "Pet", icon: "🐾" },  // Add icons here for each menu item
+        { name: "Pet", icon: "🐾" },
         { name: "Event", icon: "🎉" },
         { name: "Donation", icon: "💰" },
         { name: "Complaint", icon: "📄" },
@@ -28,12 +28,12 @@ function NavBar() {
 
                 const userRole = user.role;
 
-                const paths: Record<string, string> = {
+                const paths = {
                     vet: '/vet_form',
                     org: '/org_form',
                 };
 
-                navigate(paths[userRole as keyof typeof paths]);
+                navigate(paths[userRole]);
             } else {
                 console.error('Error fetching user data:', response);
             }
@@ -42,8 +42,8 @@ function NavBar() {
         }
     };
 
-    const handleNavigation = (item: string) => {
-        const paths: Record<string, string> = {
+    const handleNavigation = (item) => {
+        const paths = {
             Pet: '/view_pet',
             Event: '/view_event',
             Donation: '/view_donation',
@@ -51,8 +51,8 @@ function NavBar() {
             'Lost & Found': '/view_lost',
             'Q & A': '/view_q_a',
         };
-
         navigate(paths[item]);
+        setIsMenuOpen(false);
     };
 
     return (
@@ -60,25 +60,28 @@ function NavBar() {
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className={'h-[80px] bg-blend-color-dodge'} // Set the navbar background color here
+            className={'h-[80px] bg-blend-color-dodge'}
         >
-            {/* Navbar Content with Logo aligned to the left */}
-            <NavbarContent className="hidden sm:flex gap-3" justify="center">
-
+            <NavbarContent justify="start">
                 <NavbarBrand>
-                    <img className="logo" src="src/assets/logo.png" alt="React.js" />
-                        <RouterLink to="/home">
-                            <p className="font-bold text-[24px] text-blue-900">PAW CARE</p>
-                        </RouterLink>
+                    <img
+                        className="logo max-w-[100px] md:max-w-[150px]" // Ensure logo is responsive
+                        src="src/assets/logo.png"
+                        alt="React.js"
+                    />
+                    <RouterLink to="/home">
+                        <p className="font-bold text-[24px] text-blue-900 hidden md:block">PAW CARE</p>
+                    </RouterLink>
                 </NavbarBrand>
+            </NavbarContent>
 
-
-                {/* Navbar Items with icons */}
+            {/* Desktop Menu */}
+            <NavbarContent className="hidden md:flex gap-3" justify="center">
                 {menuItems.map((item, index) => (
-                    <NavbarItem key={index} className={'navbarItem pl-7  cursor-pointer'}>
+                    <NavbarItem key={index} className={'navbarItem pl-7 cursor-pointer'}>
                         <Link
                             onClick={() => handleNavigation(item.name)}
-                            className={'text-[18px] text-blue-500 font-bold flex items-center hover:text-blue-800 gap-2 '}
+                            className={'text-[18px] text-blue-500 font-bold flex items-center hover:text-blue-800 gap-3'}
                         >
                             <span>{item.icon}</span>
                             {item.name}
@@ -86,10 +89,16 @@ function NavBar() {
                     </NavbarItem>
                 ))}
             </NavbarContent>
+
+            {/* Mobile Menu Toggle */}
+            <NavbarContent className="md:hidden" justify="end">
+                <NavbarMenuToggle aria-label="toggle navigation" />
+            </NavbarContent>
+
             {/* User Profile Section */}
-            <NavbarContent justify="end" >
+            <NavbarContent justify="end" className="hidden md:flex">
                 <User
-                    className={'rounded-3xl cursor-pointer font-bold text-blue-900 text-[21px] pl-36'}
+                    className={'rounded-xl cursor-pointer text-blue-600 font-bold text-large pl-36'}
                     name="Jane Doe"
                     description="Veterinarian"
                     avatarProps={{
@@ -99,14 +108,12 @@ function NavBar() {
                 />
             </NavbarContent>
 
-
             {/* Mobile Menu */}
             <NavbarMenu>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item.name}-${index}`}>
                         <Link
-                            className="w-full"
-                            color={index === menuItems.length - 1 ? "danger" : "foreground"}
+                            className="w-full flex items-center gap-3"
                             href="#"
                             size="lg"
                             onClick={() => handleNavigation(item.name)}
@@ -116,6 +123,18 @@ function NavBar() {
                         </Link>
                     </NavbarMenuItem>
                 ))}
+                {/* Mobile User Profile */}
+                <NavbarMenuItem>
+                    <User
+                        className={'rounded-xl cursor-pointer text-blue-600 font-bold text-large'}
+                        name="Jane Doe"
+                        description="Veterinarian"
+                        avatarProps={{
+                            src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
+                        }}
+                        onClick={navigateUserProfile}
+                    />
+                </NavbarMenuItem>
             </NavbarMenu>
         </Navbar>
     );

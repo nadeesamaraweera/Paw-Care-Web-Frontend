@@ -43,8 +43,8 @@ body{
   }
 }
 .about-semi-divs{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border: 1px solid lightgray;
   border-radius: 40px;
   display: flex;
@@ -52,3 +52,4 @@ body{
   justify-content: center;
   align-items: center;
 }
+
