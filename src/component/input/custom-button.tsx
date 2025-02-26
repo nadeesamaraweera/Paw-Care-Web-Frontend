@@ -20,7 +20,6 @@ class CustomButton extends React.Component<ButtonProps, any> {
             padding: '3px 15px',
             borderRadius: '5px',
             cursor: 'pointer',
-            width : '300px',
             transition: 'background-color 0.3s ease, color 0.3s ease',
         };
 

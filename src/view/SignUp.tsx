@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../component/input/input.tsx";
 import CustomButton from "../component/input/custom-button.tsx";
-import {Radio, RadioGroup} from "@nextui-org/react";
+import { Radio, RadioGroup } from "@nextui-org/react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -19,11 +19,9 @@ const Signup: React.FC = () => {
         setPassword(event.target.value);
     };
 
-
     const handleRoleChange = (value: string) => {
         setSelectedRole(value);
     };
-
 
     const addUser = async () => {
         try {
@@ -49,7 +47,7 @@ const Signup: React.FC = () => {
                         icon: "error", title: "Sorry!", text: "Something went wrong. Please try again.",
                     }).then(() => {
                         clearForm();
-                    })
+                    });
                 }
             }
         } catch (error) {
@@ -86,31 +84,30 @@ const Signup: React.FC = () => {
         }
     };
 
-
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-teal-100 overflow-hidden">
             {/* Background animation */}
             <div className="absolute inset-0 bg-gradient-to-r from-teal-300 to-blue-300 opacity-30 blur-3xl animate-pulse"></div>
-            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg flex w-full max-w-3xl">
+            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg flex flex-col lg:flex-row w-full max-w-3xl">
 
                 {/* Right Side - Image */}
-                <div className="w-1/2 bg-gray-100 flex items-center justify-center rounded-large">
+                <div className="w-full lg:w-1/2 bg-gray-100 flex items-center justify-center rounded-lg mb-6 lg:mb-0">
                     <img
                         src="src/assets/signup.jpeg"
                         alt="Pet Care"
-                        className="w-full h-full object-cover rounded-large"
+                        className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
 
                 {/* Left Side - SignUp Form */}
-                <div className="w-1/2 p-6 flex flex-col justify-center items-center">
+                <div className="w-full lg:w-1/2 p-6 flex flex-col justify-center items-center">
                     {/* Logo */}
                     <div className="mb-2">
                         <img src="src/assets/logo.png" alt="Pet Care Logo" className="w-20 h-20"/>
                     </div>
 
                     {/* Small description under logo */}
-                    <p className="text-large font-bold text-gray-800 text-center">
+                    <p className="text-lg font-bold text-gray-800 text-center">
                         Welcome!
                     </p>
                     <p className="text-md text-gray-600 mb-3 text-center">
@@ -129,7 +126,6 @@ const Signup: React.FC = () => {
                         />
                     </div>
 
-
                     {/* Password Input */}
                     <div className="w-full mt-4">
                         <Input
@@ -141,7 +137,9 @@ const Signup: React.FC = () => {
                             placeholder="Password  "
                         />
                     </div>
-                    <div className="col-4 mt-6">
+
+                    {/* Role Selection */}
+                    <div className="w-full mt-4">
                         <div className="form-group">
                             <RadioGroup
                                 label="Select Your Role To Furry Care"
@@ -156,8 +154,8 @@ const Signup: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Centered Login Button */}
-                    <div className="mt-8">
+                    {/* Centered Signup Button */}
+                    <div className="mt-8 w-300">
                         <CustomButton
                             borderColor={'#2563EB'}
                             bgColor={'#2563EB'}
@@ -169,10 +167,10 @@ const Signup: React.FC = () => {
                         />
                     </div>
 
-                    {/* login Link */}
+                    {/* Login Link */}
                     <div className="mt-4 text-center">
                         <p>
-                            Already you have an account?
+                            Already have an account?
                             <Link to="/login" className="text-blue-500 ml-1">
                                 Login
                             </Link>
@@ -181,7 +179,7 @@ const Signup: React.FC = () => {
                 </div>
             </div>
         </div>
-
     );
 }
+
 export default Signup;

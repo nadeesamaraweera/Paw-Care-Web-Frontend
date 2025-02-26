@@ -69,9 +69,7 @@ function NavBar() {
                         src="src/assets/logo.png"
                         alt="React.js"
                     />
-                    <RouterLink to="/home">
                         <p className="font-bold text-[24px] text-blue-900 hidden md:block">PAW CARE</p>
-                    </RouterLink>
                 </NavbarBrand>
             </NavbarContent>
 

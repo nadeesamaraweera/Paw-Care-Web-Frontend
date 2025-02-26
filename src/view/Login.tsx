@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../component/input/input.tsx";
 import CustomButton from "../component/input/custom-button.tsx";
@@ -32,7 +32,7 @@ const Login: React.FC = () => {
                 if (data.status === 'success') {
                     localStorage.setItem('username', user.username);
                     console.log("saved username in local storage: ", localStorage.getItem('username'));
-                    window.location.href = '/About.tsx';
+                    window.location.href = 'home';
                 } else {
                     alert(data.message);
                 }
@@ -42,26 +42,25 @@ const Login: React.FC = () => {
         }
     };
 
-
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-teal-100 overflow-hidden">
             {/* Background animation */}
             <div className="absolute inset-0 bg-gradient-to-r from-teal-300 to-blue-300 opacity-30 blur-3xl animate-pulse"></div>
-            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg flex w-full max-w-3xl">
+            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg w-full max-w-4xl flex flex-col lg:flex-row">
 
                 {/* Right Side - Image */}
-                <div className="w-1/2 bg-gray-100 flex items-center justify-center rounded-large">
+                <div className="w-full lg:w-1/2 bg-gray-100 flex items-center justify-center rounded-lg p-4">
                     <img
                         src="src/assets/login.jpeg"
                         alt="Pet Care"
-                        className="w-full h-full object-cover rounded-t-large rounded-b-full"
+                        className="w-full h-full object-cover rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
                     />
                 </div>
 
                 {/* Left Side - Login Form */}
-                <div className="w-1/2 p-6 flex flex-col justify-center items-center">
+                <div className="w-full lg:w-1/2 p-6 flex flex-col justify-center items-center">
                     {/* Logo */}
-                    <div className="mb-2">
+                    <div className="mb-4">
                         <img src="src/assets/logo.png" alt="Pet Care Logo" className="w-20 h-20"/>
                     </div>
 
@@ -74,32 +73,31 @@ const Login: React.FC = () => {
                     </p>
 
                     {/* Username Input */}
-                    <div className="w-full">
+                    <div className="w-full mb-4">
                         <Input
                             type="text"
                             name="username"
                             label="Email :"
                             optional={false}
                             callBack={handleUsernameChange}
-                            placeholder="Enter Your Email  "
+                            placeholder="Enter Your Email"
                         />
                     </div>
 
-
                     {/* Password Input */}
-                    <div className="w-full mt-4">
+                    <div className="w-full mb-4">
                         <Input
                             type="password"
                             name="password"
                             label="Password :"
                             optional={false}
                             callBack={handlePasswordChange}
-                            placeholder="Password  "
+                            placeholder="Password"
                         />
                     </div>
 
                     {/* Centered Login Button */}
-                    <div className="mt-4">
+                    <div className="w-300 mb-4 ">
                         <CustomButton
                             borderColor={'#2563EB'}
                             bgColor={'#2563EB'}
@@ -121,7 +119,6 @@ const Login: React.FC = () => {
                         </p>
                     </div>
                 </div>
-
 
             </div>
         </div>

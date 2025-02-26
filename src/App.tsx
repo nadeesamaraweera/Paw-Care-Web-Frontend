@@ -24,7 +24,7 @@ function App() {
                 <Route path="/" element={<WelcomePage/>}/>
                 <Route path="signup" element={<Signup/>}/>
                 <Route path="login" element={<Login/>}/>
-                <Route path="/home" element={<About/>}/>
+                <Route path="home" element={<About/>}/>
 
             </Routes>
             {shouldShowNavBarAndFooter && <Footer />}

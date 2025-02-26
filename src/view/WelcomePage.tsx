@@ -10,7 +10,7 @@ const WelcomePage: React.FC = () => {
             <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-teal-300 to-blue-300 opacity-20 blur-3xl"></div>
 
             {/* Header Bar */}
-            <header className="w-full flex justify-between items-center px-8 py-4 bg-white shadow-md fixed top-0">
+            <header className="w-full flex justify-between items-center px-8 py-4 bg-white shadow-md fixed top-0 z-10">
                 {/* Logo and Title */}
                 <div className="flex items-center space-x-3">
                     <img src="src/assets/logo.png" alt="Logo" className="h-15 w-14" />
@@ -20,7 +20,7 @@ const WelcomePage: React.FC = () => {
                 {/* Auth Buttons */}
                 <div className="space-x-4">
                     <button className="px-4 py-2 text-blue-500 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition"
-                    onClick={() => navigate('/login')}>
+                            onClick={() => navigate('/login')}>
                         Login
                     </button>
                     <button
@@ -33,29 +33,29 @@ const WelcomePage: React.FC = () => {
             </header>
 
             {/* Welcome Content with Centered Image Cards */}
-            <main className="mt-18 text-center flex flex-col items-center">
+            <main className="mt-32 text-center flex flex-col items-center">
                 <h2 className="text-5xl font-bold text-blue-600">Welcome to Paw Care.</h2>
-                <p className="mt-2   text-blue-500">Your one-stop solution for pet care services.</p>
+                <p className="mt-2 text-blue-500">Your one-stop solution for pet care services.</p>
 
                 {/* Image Cards Section */}
-                <div className="mt-10 grid grid-cols-3 md:grid-cols-3 gap-10">
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 px-4 md:px-0">
                     {/* Card 1 */}
-                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-80 h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
-                        <img src="/src/assets/welcomePage/Event.jpeg" alt="Pet Care" className="w-64 h-60 object-cover rounded-lg" />
+                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-full max-w-xs mx-auto h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
+                        <img src="/src/assets/welcomePage/Event.jpeg" alt="Pet Care" className="w-full h-60 object-cover rounded-lg" />
                         <h3 className="mt-4 text-xl font-bold text-gray-800">Event</h3>
                         <p className="text-gray-500 mt-2 text-center">Stay updated with upcoming pet events and activities.</p>
                     </div>
 
                     {/* Card 2 */}
-                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-80 h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
-                        <img src="/src/assets/welcomePage/Donation.jpeg" alt="Pet Care" className="w-64 h-60 object-cover rounded-lg" />
+                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-full max-w-xs mx-auto h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
+                        <img src="/src/assets/welcomePage/Donation.jpeg" alt="Pet Care" className="w-full h-60 object-cover rounded-lg" />
                         <h3 className="mt-4 text-xl font-bold text-gray-800">Donation</h3>
                         <p className="text-gray-500 mt-2 text-center">Support pet care initiatives by making donations.</p>
                     </div>
 
                     {/* Card 3 */}
-                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-80 h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
-                        <img src="src/assets/welcomePage/lost.jpeg" alt="Pet Care" className="w-64 h-60 object-cover rounded-lg" />
+                    <div className="bg-white p-10 rounded-2xl shadow-lg flex flex-col items-center w-full max-w-xs mx-auto h-96 transform transition duration-300 hover:scale-105 cursor-pointer">
+                        <img src="src/assets/welcomePage/lost.jpeg" alt="Pet Care" className="w-full h-60 object-cover rounded-lg" />
                         <h3 className="mt-4 text-xl font-bold text-gray-800">Lost & Found</h3>
                         <p className="text-gray-500 mt-2 text-center">Help reunite lost pets with their families.</p>
                     </div>
