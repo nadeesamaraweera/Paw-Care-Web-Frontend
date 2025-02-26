@@ -78,7 +78,7 @@ function NavBar() {
                     <NavbarItem key={index} className={'navbarItem pl-7  cursor-pointer'}>
                         <Link
                             onClick={() => handleNavigation(item.name)}
-                            className={'text-[20px] text-blue-500 font-bold flex items-center hover:text-blue-800 gap-3 '}
+                            className={'text-[18px] text-blue-500 font-bold flex items-center hover:text-blue-800 gap-2 '}
                         >
                             <span>{item.icon}</span>
                             {item.name}
@@ -87,9 +87,9 @@ function NavBar() {
                 ))}
             </NavbarContent>
             {/* User Profile Section */}
-            <NavbarContent justify="end">
+            <NavbarContent justify="end" >
                 <User
-                    className={'rounded-3xl cursor-pointer text-blue-600 font-bold  pl-36 text-xl'}
+                    className={'rounded-3xl cursor-pointer font-bold text-blue-900 text-[21px] pl-36'}
                     name="Jane Doe"
                     description="Veterinarian"
                     avatarProps={{
@@ -98,6 +98,7 @@ function NavBar() {
                     onClick={navigateUserProfile}
                 />
             </NavbarContent>
+
 
             {/* Mobile Menu */}
             <NavbarMenu>
@@ -110,13 +111,12 @@ function NavBar() {
                             size="lg"
                             onClick={() => handleNavigation(item.name)}
                         >
-                            <span>{item.icon}</span> {/* Render icon next to text */}
+                            <span>{item.icon}</span>
                             {item.name}
                         </Link>
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
-
         </Navbar>
     );
 }
