@@ -12,6 +12,8 @@ import ViewPet from "./view/detail-view/ViewPet.tsx";
 import PetForm from "./view/form/PetForm.tsx";
 import EventForm from "./view/form/EventForm.tsx";
 import ViewPetEvent from "./view/detail-view/ViewPetEvent.tsx";
+import ViewDonation from "./view/detail-view/ViewDonation.tsx";
+import DonationForm from "./view/form/DonationForm.tsx";
 
 function App() {
 
@@ -95,6 +97,20 @@ function App() {
         },
     ];
 
+    const donationData = [
+        { DonationID: "D-0001", Date: "2023-12-01", Location: "Panadura", Donor: "Alice", Receiver: "Michael" },
+        { DonationID: "D-0002", Date: "2023-12-02", Location: "Colombo", Donor: "Bob", Receiver: "Sophia" },
+        { DonationID: "D-0003", Date: "2023-12-03", Location: "Galle", Donor: "Charlie", Receiver: "Liam" },
+        { DonationID: "D-0004", Date: "2023-12-04", Location: "Kandy", Donor: "David", Receiver: "Emma" },
+        { DonationID: "D-0005", Date: "2023-12-05", Location: "Kurunegala", Donor: "Ella", Receiver: "Noah" },
+        { DonationID: "D-0006", Date: "2023-12-06", Location: "Kegalle", Donor: "Frank", Receiver: "Olivia" },
+        { DonationID: "D-0007", Date: "2023-12-07", Location: "Gampaha", Donor: "Grace", Receiver: "William" },
+        { DonationID: "D-0008", Date: "2023-12-08", Location: "Matara", Donor: "Henry", Receiver: "Ava" },
+        { DonationID: "D-0009", Date: "2023-12-09", Location: "Anuradhapura", Donor: "Isla", Receiver: "James" },
+        { DonationID: "D-0010", Date: "2023-12-10", Location: "Polonnaruwa", Donor: "Jack", Receiver: "Charlotte" }
+    ];
+
+
 
 
     return (
@@ -109,6 +125,10 @@ function App() {
                 <Route path="/pet_form" element={<PetForm/>}/>
                 <Route path="/view_event" element={<ViewPetEvent data={eventData}/>}/>
                 <Route path="/event_form" element={<EventForm/>}/>
+                <Route path="/view_donation" element={<ViewDonation data={donationData}/>}/>
+                <Route path="/donation_form" element={<DonationForm/>}/>
+
+
 
 
 
