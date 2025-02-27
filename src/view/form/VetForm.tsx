@@ -343,8 +343,7 @@ function VetForm() {
         }
     };
     return (
-        <form
-            className="max-w-3xl mx-auto mt-5 flex flex-col gap-4 p-6 bg-white shadow-lg rounded-lg border-l-8 border-r-8 border-gray-300">
+        <form className="max-w-3xl mx-auto mt-5 flex flex-col gap-4 p-6 bg-white shadow-lg rounded-lg border-l-8 border-r-8 border-gray-300">
             {/* User ID */}
             <div className='flex justify-end '>
                 <button className={'cursor-pointer'} onClick={backToDashboard}>
@@ -368,8 +367,6 @@ function VetForm() {
                 </div>
 
             </div>
-
-
             {/* Form Fields */}
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <Input label="Veterinarian ID:" name='id' type='text' optional={false} placeholder='V-0001'
