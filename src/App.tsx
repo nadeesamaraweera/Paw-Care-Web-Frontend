@@ -442,12 +442,6 @@ function App() {
             Location: "Gampaha",
         },
     ];
-
-
-
-
-
-
     return (
         <BrowserRouter>
                 {shouldShowNavBarAndFooter && <NavBar />}

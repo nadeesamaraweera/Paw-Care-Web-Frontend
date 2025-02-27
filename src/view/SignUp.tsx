@@ -145,12 +145,13 @@ const Signup: React.FC = () => {
                                 label="Select Your Role To Paw Care"
                                 orientation="horizontal"
                                 value={selectedRole}
-                                onChange={event => handleRoleChange(event.target.value)}
+                                onValueChange={handleRoleChange}  // Use correct event handler
                             >
                                 <Radio value="vet">Vet</Radio>
                                 <Radio value="org">Org</Radio>
                                 <Radio value="other">Other</Radio>
                             </RadioGroup>
+
                         </div>
                     </div>
 

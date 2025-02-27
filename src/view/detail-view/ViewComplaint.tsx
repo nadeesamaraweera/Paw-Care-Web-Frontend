@@ -17,14 +17,8 @@ interface ViewComplaintProps {
 }
 
 function ViewComplaint({ data }: ViewComplaintProps) {
-    //const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
-    // const handleManage = (e: React.MouseEvent<HTMLButtonElement>) => {
-    //     e.preventDefault();
-    //     navigate("/complaint_form");
-    //     window.scrollTo({ top: 0, behavior: "smooth" });
-    // };
 
     if (data.length === 0) {
         return <p className="text-center text-lg mt-6">No data available.</p>;
