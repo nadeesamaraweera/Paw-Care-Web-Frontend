@@ -1,6 +1,5 @@
 import CustomButton from "../../component/input/custom-button.tsx";
-import { useNavigate } from "react-router-dom";
-import React, {useState} from "react";
+import  {useState} from "react";
 import {FaEye, FaPaw} from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
 import EventForm from "../form/EventForm.tsx";
@@ -19,15 +18,6 @@ interface EventProps {
 
 function ViewPetEvent({ data }: EventProps) {
     const [isOpen, setIsOpen] = useState(false);
-
-    const navigate = useNavigate();
-
-    const handleManage = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        console.log("button clicked.");
-        navigate("/event_form");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
 
     if (data.length === 0) {
         return <p className="text-center text-lg mt-6">No data available.</p>;

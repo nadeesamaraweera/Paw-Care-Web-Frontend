@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { MdEvent } from "react-icons/md";
+import {MdComment, MdEvent} from "react-icons/md";
 import CustomButton from "../../component/input/custom-button.tsx";
 import ComplaintForm from "../form/ComplaintForm.tsx";
 
@@ -85,7 +85,7 @@ function ViewComplaint({ data }: ViewComplaintProps) {
                     hoverColor="#59AE4B"
                     textColor="#59AE4B"
                     textHoverColor="white"
-                    text={<><MdEvent className="inline-block mr-1" /> Complaint</>}
+                    text={<><MdComment className="inline-block mr-1" /> Complaint</>}
                     onClick={() => setIsOpen(true)} // Open the popup
                 />
             </div>

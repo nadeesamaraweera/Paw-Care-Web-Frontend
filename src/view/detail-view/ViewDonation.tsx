@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FaEye, FaHandHoldingHeart } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
 import CustomButton from "../../component/input/custom-button.tsx";
-import DonationForm from "../form/DonationForm.tsx"; // Import the form popup
+import DonationForm from "../form/DonationForm.tsx";
+import {IoMdCash} from "react-icons/io"; // Import the form popup
 
 interface DonationData {
     DonationID: string;
@@ -75,7 +76,7 @@ function ViewDonation({ data }: DonationProps) {
                     hoverColor="#59AE4B"
                     textColor="#59AE4B"
                     textHoverColor="white"
-                    text={<><MdEvent className="inline-block mr-1" /> Donation</>}
+                    text={<><IoMdCash className="inline-block mr-1" /> Donation</>}
                     onClick={() => setIsOpen(true)} // Open the popup
                 />
             </div>

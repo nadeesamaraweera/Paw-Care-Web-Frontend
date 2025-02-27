@@ -4,6 +4,7 @@ import ComboBox from "../../component/input/combo-box.tsx";
 import PetForm from "../form/PetForm.tsx";
 import PetCard from "../../component/PetCard.tsx";
 import { FaPaw } from "react-icons/fa";
+import {MdEvent, MdPets} from "react-icons/md";
 
 interface PetItem {
     id: string;
@@ -50,11 +51,12 @@ function ViewPet() {
     };
 
     return (
-        <div className="w-full sm:w-4/5 py-6 px-4 sm:px-6 m-auto border-2 border-gray-100 my-6 bg-white rounded-lg shadow-md">
+        <div
+            className="w-full sm:w-4/5 py-6 px-4 sm:px-6 m-auto border-2 border-gray-100 my-6 bg-white rounded-lg shadow-md">
             {/* Title with Icon */}
             <div className="text-center h-24">
                 <p className="text-5xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1E3A8A] to-[#60A5FA] shadow-lg flex items-center justify-center">
-                    <FaPaw className="mr-4 text-6xl" />
+                    <FaPaw className="mr-4 text-6xl"/>
                     Little Paws
                 </p>
             </div>
@@ -77,7 +79,7 @@ function ViewPet() {
                     {petData && petData.length > 0 ? (
                         petData.map((item: PetItem) => (
                             <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4" key={item.id}>
-                                <PetCard item={item} />
+                                <PetCard item={item}/>
                             </div>
                         ))
                     ) : (
@@ -87,21 +89,21 @@ function ViewPet() {
             </div>
 
             {/* Manage Pet Button */}
-            <div className="flex justify-end items-center pt-4 gap-4">
+            <div className="flex justify-center mt-10">
                 <CustomButton
-                    borderColor={"#071722"}
-                    bgColor={"white"}
-                    hoverColor={"#071722"}
-                    textColor={"#071722"}
-                    textHoverColor={"white"}
-                    text={"Manage Pet"}
-                    onClick={handleManage}
+                    borderColor="#59AE4B"
+                    bgColor="white"
+                    hoverColor="#59AE4B"
+                    textColor="#59AE4B"
+                    textHoverColor="white"
+                    text={<><MdPets className="inline-block mr-1"/> Manage Pet</>}
+                    onClick={handleManage} // Open the popup
                 />
             </div>
 
             {/* Show Pet Form */}
-            {showPetForm && <PetForm />}
-            <hr id="view-pet-end-hr" className="my-6 border-t-2 border-gray-300" />
+            {showPetForm && <PetForm/>}
+            <hr id="view-pet-end-hr" className="my-6 border-t-2 border-gray-300"/>
         </div>
     );
 }
