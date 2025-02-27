@@ -14,6 +14,8 @@ import EventForm from "./view/form/EventForm.tsx";
 import ViewPetEvent from "./view/detail-view/ViewPetEvent.tsx";
 import ViewDonation from "./view/detail-view/ViewDonation.tsx";
 import DonationForm from "./view/form/DonationForm.tsx";
+import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
+import ComplaintForm from "./view/form/ComplaintForm.tsx";
 
 function App() {
 
@@ -110,6 +112,70 @@ function App() {
         { DonationID: "D-0010", Date: "2023-12-10", Location: "Polonnaruwa", Donor: "Jack", Receiver: "Charlotte" }
     ];
 
+    const data = [
+        {
+            ComplaintID: "C-0001",
+            Date: "2021-09-10",
+            Location: "Panadura",
+            Title: "Noise Disturbance",
+            Status: "Not Resolved",
+        }, {
+            ComplaintID: "C-0002",
+            Date: "2021-09-11",
+            Location: "Colombo",
+            Title: "Stray Dog Attack",
+            Status: "Resolved",
+        }, {
+            ComplaintID: "C-0003",
+            Date: "2021-09-12",
+            Location: "Galle",
+            Title: "Illegal Pet Trade",
+            Status: "Not Resolved",
+        }, {
+            ComplaintID: "C-0004",
+            Date: "2021-09-13",
+            Location: "Kandy",
+            Title: "Animal Abuse",
+            Status: "Resolved",
+        }, {
+            ComplaintID: "C-0005",
+            Date: "2021-09-14",
+            Location: "Kurunegala",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        }, {
+            ComplaintID: "C-0006",
+            Date: "2021-09-15",
+            Location: "Kegalle",
+            Title: "Stray Dog Issue",
+            Status: "Resolved",
+        }, {
+            ComplaintID: "C-0007",
+            Date: "2021-09-16",
+            Location: "Gampaha",
+            Title: "Pet Theft",
+            Status: "Not Resolved",
+        }, {
+            ComplaintID: "C-0008",
+            Date: "2021-09-17",
+            Location: "Matara",
+            Title: "Noise Disturbance",
+            Status: "Resolved",
+        }, {
+            ComplaintID: "C-0009",
+            Date: "2021-09-18",
+            Location: "Anuradhapura",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        }, {
+            ComplaintID: "C-0010",
+            Date: "2021-09-19",
+            Location: "Polonnaruwa",
+            Title: "Animal Cruelty",
+            Status: "Resolved",
+        }
+    ];
+
 
 
 
@@ -127,6 +193,8 @@ function App() {
                 <Route path="/event_form" element={<EventForm/>}/>
                 <Route path="/view_donation" element={<ViewDonation data={donationData}/>}/>
                 <Route path="/donation_form" element={<DonationForm/>}/>
+                <Route path="/view_complaint" element={<ViewComplaint data={data}/>}/>
+                <Route path="/complaint_form" element={<ComplaintForm/>}/>
 
 
 
