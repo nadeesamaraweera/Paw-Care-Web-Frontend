@@ -3,6 +3,7 @@ import { Navbar, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Na
 import { User } from "@nextui-org/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { LogOut } from "lucide-react";
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -16,6 +17,16 @@ function NavBar() {
         { name: "Lost & Found", icon: "🔍" },
         { name: "Q & A", icon: "❓" },
     ];
+
+    const handleLogout = () => {
+        // Remove user-related data from localStorage
+        localStorage.removeItem("username");
+        localStorage.removeItem("user");
+
+        // Navigate to the login page using window.location.href
+        window.location.href = "/login";
+    };
+
 
     const navigateUserProfile = async () => {
         try {
@@ -106,6 +117,8 @@ function NavBar() {
                     }}
                     onClick={navigateUserProfile}
                 />
+                <LogOut className="cursor-pointer text-blue-500 hover:text-blue-700 ml-12" size={30} onClick={handleLogout} />
+
             </NavbarContent>
 
             {/* Mobile Menu */}

@@ -33,7 +33,7 @@ class Input extends React.Component<Props, object> {
                     type={this.props.type}
                     id={this.props.name}
                     placeholder={this.props.placeholder}
-                    className={'block border border-gray-300 outline-none focus:border-t-gray-400 p-2 h-10 w-2/3 rounded-xl'}
+                    className={'block border border-gray-300 outline-none focus:border-t-gray-400 p-2 h-10 w-full rounded'}
                     onChange={this.handleInput}
                     onKeyDown={this.handleKeyDown}
                     value={this.props.value}

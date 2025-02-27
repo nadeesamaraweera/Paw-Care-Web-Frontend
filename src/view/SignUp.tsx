@@ -139,13 +139,13 @@ const Signup: React.FC = () => {
                     </div>
 
                     {/* Role Selection */}
-                    <div className="w-full mt-4">
+                    <div className="col-4 mt-6">
                         <div className="form-group">
                             <RadioGroup
-                                label="Select Your Role To Furry Care"
+                                label="Select Your Role To Paw Care"
                                 orientation="horizontal"
                                 value={selectedRole}
-                                onChange={(event) => handleRoleChange(event.target.value)}
+                                onChange={event => handleRoleChange(event.target.value)}
                             >
                                 <Radio value="vet">Vet</Radio>
                                 <Radio value="org">Org</Radio>

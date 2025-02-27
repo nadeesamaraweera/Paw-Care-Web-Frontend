@@ -20,6 +20,8 @@ import LostAndFoundForm from "./view/form/LostAndFoundForm.tsx";
 import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
 import ViewQA from "./view/detail-view/ViewQA.tsx";
 import QAForm from "./view/form/QAForm.tsx";
+import VetForm from "./view/form/VetForm.tsx";
+import ViewVet from "./view/detail-view/ViewVet.tsx";
 
 function App() {
 
@@ -308,7 +310,64 @@ function App() {
             date: "2024-02-23",
         },
     ];
-
+    const vetData = [
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0001",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Panadura",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0002",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Colombo",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0003",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Galle",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0004",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kandy",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0005",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kurunegala",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0006",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kegalle",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0007",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Gampaha",
+        }, {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0008",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Matara",
+        }];
 
 
 
@@ -334,6 +393,8 @@ function App() {
                 <Route path="/lost_form" element={<LostAndFoundForm/>}/>
                 <Route path="/view_q_a" element={<ViewQA/>}/>
                 <Route path="/q_form" element={<QAForm/>}/>
+                <Route path="/view_vet" element={<ViewVet list={vetData}/>}/>
+                <Route path="/vet_form" element={<VetForm/>}/>
 
 
 
