@@ -18,6 +18,8 @@ import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
 import ComplaintForm from "./view/form/ComplaintForm.tsx";
 import LostAndFoundForm from "./view/form/LostAndFoundForm.tsx";
 import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
+import ViewQA from "./view/detail-view/ViewQA.tsx";
+import QAForm from "./view/form/QAForm.tsx";
 
 function App() {
 
@@ -330,6 +332,9 @@ function App() {
                 <Route path="/complaint_form" element={<ComplaintForm/>}/>
                 <Route path="/view_lost" element={<ViewLostAndFound list={LostData}/>}/>
                 <Route path="/lost_form" element={<LostAndFoundForm/>}/>
+                <Route path="/view_q_a" element={<ViewQA/>}/>
+                <Route path="/q_form" element={<QAForm/>}/>
+
 
 
 
