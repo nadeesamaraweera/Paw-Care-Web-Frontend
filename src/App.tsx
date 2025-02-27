@@ -9,6 +9,7 @@ import NavBar from "./view/NavBar.tsx";
 import Footer from "./view/Footer.tsx";
 import About from "./view/About.tsx";
 import ViewPet from "./view/detail-view/ViewPet.tsx";
+import PetForm from "./view/form/PetForm.tsx";
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
                 <Route path="login" element={<Login/>}/>
                 <Route path="home" element={<About/>}/>
                 <Route path="/view_pet" element={<ViewPet/>}/>
+                <Route path="/pet_form" element={<PetForm/>}/>
+
 
 
             </Routes>

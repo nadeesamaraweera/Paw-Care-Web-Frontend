@@ -32,7 +32,7 @@ const Signup: React.FC = () => {
 
                 console.log("user", newUser); // Log the object directly without stringify
 
-                const response = await axios.post("http://localhost:3002/api/user/add", newUser);
+                const response = await axios.post("http://localhost:3000/api/user/add", newUser);
                 console.log(response);
 
                 if (response.status === 200) {

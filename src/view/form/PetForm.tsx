@@ -5,6 +5,7 @@ import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
 import Swal from "sweetalert2";
 import axios from "axios";
+import * as url from "node:url";
 
 const userId: string = `username1`;
 
@@ -12,10 +13,7 @@ const userId: string = `username1`;
 function PetForm() {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
-
     const [petId, setPetId] = useState<string>("");
-    // const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
     const [petType, setPetType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [age, setAge] = useState<number>(0);
@@ -156,12 +154,13 @@ function PetForm() {
 
     // =======================================================================================================
     const uploadImage = () => {
-        console.log("in Upload Image method")
+        console.log("Uploading image...");
         return new Promise((resolve, reject) => {
             const fileInput = fileInputRef.current;
 
             if (!fileInput) {
-                reject('File input element not found.');
+                console.error("File input element not found.");
+                reject("File input element not found.");
                 return;
             }
 
@@ -169,77 +168,76 @@ function PetForm() {
                 const selectedImage = fileInput.files[0];
 
                 const formData = new FormData();
-                formData.append('image', selectedImage);
+                formData.append("image", selectedImage);
 
-                const config = {
-                    method: 'post',
-                    url: 'http://localhost:3000/api/upload/images',
-                    data: formData,
-                };
-
-                axios.request(config)
+                axios.post("http://localhost:3000/api/upload/images", formData)
                     .then(response => {
-                        console.log('=====================================');
-                        console.log("Test in backend : ", JSON.stringify(response.data));
-                        console.log('=====================================');
+                        console.log("Image uploaded successfully:", response.data);
                         resolve(response.data);
                     })
                     .catch(error => {
-                        console.error('Error uploading image:', error);
-                        reject('Error uploading image');
+                        console.error("Error uploading image:", error);
+                        reject("Error uploading image");
                     });
             } else {
-                console.error('No file selected.');
-                reject('No file selected.');
+                console.error("No file selected.");
+                reject("No file selected.");
             }
         });
     };
 
+
     const savePet = async () => {
         try {
+            console.log("Uploading image...");
             const imageUrl = await uploadImage();
-            const url = (imageUrl as { profile_url: string }).profile_url;
-            console.log("Url in frontend : ", url);
+            console.log("Image upload response:", imageUrl);
+
+            // Ensure imageUrl contains the expected field
+            console.log("Response url in frontend : ", (imageUrl as { profile_url: string }).profile_url);
+            if (!url) {
+                throw new Error("Invalid image URL response");
+            }
+
+            console.log("Image URL in frontend:", url);
 
             const pet = {
                 id: petId,
-                petType: petType,
-                name: name,
-                age: age,
-                breed: breed,
-                colors: colors,
-                ownershipStatus: ownershipStatus,
-                injuredStatus: injuredStatus,
+                petType,
+                name,
+                age,
+                breed,
+                colors,
+                ownershipStatus,
+                injuredStatus,
                 username: userId,
                 imageUrl: url
             };
 
             if (validateSubmission()) {
+                console.log("Saving pet...");
                 const response = await axios.post("http://localhost:3000/api/pet/add", pet);
-
-                console.log("Response url in frontend : ", (imageUrl as { profile_url: string }).profile_url);
+                console.log("Pet saved successfully:", response.data);
 
                 Swal.fire({
-                    icon: "success", title: "Success!", text: "Pet saved successfully."
+                    icon: "success",
+                    title: "Success!",
+                    text: "Pet saved successfully."
                 });
 
                 clearForm();
-                console.log("Response success : ", response);
             }
         } catch (error) {
-            console.error('Error during pet save:', error);
+            console.error("Error during pet save:", error);
 
-            if (error === 'No file selected.') {
-                Swal.fire({
-                    icon: "error", title: "Error!", text: "No file selected."
-                });
-            } else {
-                Swal.fire({
-                    icon: "error", title: "Error!", text: "Error during pet save"
-                });
-            }
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: error instanceof Error ? error.message : "Error during pet save"
+            });
         }
     };
+
 
     const updatePet = async () => {
         try {

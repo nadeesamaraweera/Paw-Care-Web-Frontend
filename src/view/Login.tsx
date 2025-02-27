@@ -21,7 +21,7 @@ const Login: React.FC = () => {
             console.log(JSON.stringify(user));
 
             try {
-                const response = await fetch('http://localhost:3002/api/user/login', {
+                const response = await fetch('http://localhost:3000/api/user/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -46,14 +46,14 @@ const Login: React.FC = () => {
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-teal-100 overflow-hidden">
             {/* Background animation */}
             <div className="absolute inset-0 bg-gradient-to-r from-teal-300 to-blue-300 opacity-30 blur-3xl animate-pulse"></div>
-            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg w-full max-w-4xl flex flex-col lg:flex-row">
+            <div className="relative bg-white bg-opacity-90 p-5 rounded-xl shadow-lg w-full max-w-3xl flex flex-col lg:flex-row">
 
                 {/* Right Side - Image */}
-                <div className="w-full lg:w-1/2 bg-gray-100 flex items-center justify-center rounded-lg p-4">
+                <div className="w-full lg:w-1/2 bg-gray-100 flex items-center justify-center rounded-lg p-4 ">
                     <img
                         src="src/assets/login.jpeg"
                         alt="Pet Care"
-                        className="w-full h-full object-cover rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
+                        className="w-full h-full object-cover rounded-b-full"
                     />
                 </div>
 
