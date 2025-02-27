@@ -22,6 +22,8 @@ import ViewQA from "./view/detail-view/ViewQA.tsx";
 import QAForm from "./view/form/QAForm.tsx";
 import VetForm from "./view/form/VetForm.tsx";
 import ViewVet from "./view/detail-view/ViewVet.tsx";
+import ViewOrganization from "./view/detail-view/ViewOrganization.tsx";
+import OrgForm from "./view/form/OrgForm.tsx";
 
 function App() {
 
@@ -368,6 +370,79 @@ function App() {
             Contact: "0771234567",
             Location: "Matara",
         }];
+    const orgData = [
+        {
+            Name: "Wildlife Protection Society",
+            Img: "src/assets/org1-image.jpg",
+            Id: "O-0001",
+            Contact: "0772345678",
+            Location: "Colombo",
+        },
+        {
+            Name: "Wildlife Protection Society",
+            Img: "src/assets/org2-image.jpg",
+            Id: "O-0002",
+            Contact: "0772345678",
+            Location: "Kandy",
+        },
+        {
+            Name: "Animal Rescue League",
+            Img: "src/assets/org3-image.jpg",
+            Id: "O-0003",
+            Contact: "0773456789",
+            Location: "Galle",
+        },
+        {
+            Name: "Animal Rescue League",
+            Img: "src/assets/org4-image.jpg",
+            Id: "O-0004",
+            Contact: "0773456789",
+            Location: "Kurunegala",
+        },
+        {
+            Name: "Nature Conservation Group",
+            Img: "src/assets/org5-image.jpg",
+            Id: "O-0005",
+            Contact: "0774567890",
+            Location: "Panadura",
+        },
+        {
+            Name: "Nature Conservation Group",
+            Img: "src/assets/org6-image.jpg",
+            Id: "O-0006",
+            Contact: "0774567890",
+            Location: "Kegalle",
+        },
+        {
+            Name: "Eco Awareness Foundation",
+            Img: "src/assets/org7-image.jpg",
+            Id: "O-0007",
+            Contact: "0775678901",
+            Location: "Matara",
+        },
+        {
+            Name: "Eco Awareness Foundation",
+            Img: "src/assets/org8-image.jpg",
+            Id: "O-0008",
+            Contact: "0775678901",
+            Location: "Anuradhapura",
+        },
+        {
+            Name: "Green Earth Initiative",
+            Img: "src/assets/org9-image.jpg",
+            Id: "O-0009",
+            Contact: "0776789012",
+            Location: "Polonnaruwa",
+        },
+        {
+            Name: "Green Earth Initiative",
+            Img: "src/assets/org10-image.jpg",
+            Id: "O-0010",
+            Contact: "0776789012",
+            Location: "Gampaha",
+        },
+    ];
+
 
 
 
@@ -395,6 +470,8 @@ function App() {
                 <Route path="/q_form" element={<QAForm/>}/>
                 <Route path="/view_vet" element={<ViewVet list={vetData}/>}/>
                 <Route path="/vet_form" element={<VetForm/>}/>
+                <Route path="/view_org" element={<ViewOrganization list={orgData}/>}/>
+                <Route path="/org_form" element={<OrgForm/>}/>
 
 
 
