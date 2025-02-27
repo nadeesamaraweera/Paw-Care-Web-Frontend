@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { IoCloseOutline } from "react-icons/io5";
 import Input from "../../component/input/input.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
@@ -7,14 +8,31 @@ import axios from "axios";
 
 const userId = "U-0001";
 
-function EventForm() {
+function EventForm({ isOpen, onClose }) {
+    if (!isOpen) return null;
+
     const [eventId, setEventId] = useState("");
     const [eventName, setEventName] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [location, setLocation] = useState("");
-    const [formVisible, setFormVisible] = useState(true);
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                onClose();
+            }
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [onClose]);
+
+    const handleOverlayClick = (event) => {
+        if (event.target.id === "modal-overlay") {
+            onClose();
+        }
+    };
 
     const handleInputs = (e, type) => {
         const value = e.target.value;
@@ -65,66 +83,31 @@ function EventForm() {
         }
     };
 
-    const closeForm = () => {
-        setFormVisible(false);
-        window.scrollTo(0, 0);
-    };
-
     return (
-        formVisible && (
-            <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-                <form className="w-full max-w-lg bg-blue-100 shadow-xl rounded-xl p-8 border border-gray-300">
-                    <div className="flex justify-between items-center mb-6">
-                        <span className="text-lg font-semibold text-gray-700 bg-blue-200 px-4 py-1 rounded-md">
-                            User ID: {userId}
-                        </span>
-                        <button type="button" onClick={closeForm} className="text-gray-600 hover:text-red-500">
-                            <IoCloseOutline className="text-[30px]" />
-                        </button>
-                    </div>
-                    <div className="space-y-4">
-                        <Input label="Event ID:" type="text" value={eventId} callBack={handleInputs} name="eventId" />
-                        <Input label="Event Name:" type="text" value={eventName} callBack={handleInputs} name="eventName" />
-                        <Input label="Description:" type="text" value={description} callBack={handleInputs} name="description" />
-                        <Input label="Date:" type="date" value={date} callBack={handleInputs} name="date" />
-                        <Input label="Time:" type="time" value={time} callBack={handleInputs} name="time" />
-                        <Input label="Location:" type="text" value={location} callBack={handleInputs} name="location" />
-                    </div>
-                    <div className="flex flex-wrap gap-3 justify-center mt-6">
-                        <CustomButton
-                            borderColor="#071722"
-                            bgColor="white"
-                            hoverColor="blue"
-                            textColor="#071722"
-                            textHoverColor="white"
-                            text="Save"
-                            onClick={saveEvent}
-                            className="px-6 py-2 rounded-md border hover:bg-blue-600 hover:text-white transition-all"
-                        />
-                        <CustomButton
-                            borderColor="#59AE4B"
-                            bgColor="white"
-                            hoverColor="green"
-                            textColor="#59AE4B"
-                            textHoverColor="white"
-                            text="Update"
-                            onClick={updateEvent}
-                            className="px-6 py-2 rounded-md border hover:bg-green-600 hover:text-white transition-all"
-                        />
-                        <CustomButton
-                            borderColor="#D75555"
-                            bgColor="white"
-                            hoverColor="red"
-                            textColor="#D75555"
-                            textHoverColor="white"
-                            text="Delete"
-                            onClick={deleteEvent}
-                            className="px-6 py-2 rounded-md border hover:bg-red-600 hover:text-white transition-all"
-                        />
-                    </div>
-                </form>
-            </div>
-        )
+        <div id="modal-overlay" className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center px-4" onClick={handleOverlayClick}>
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="bg-white rounded-xl p-4 mt-12 shadow-lg w-full max-w-[90%] sm:max-w-[450px] max-h-[80vh] overflow-y-auto">
+                <div className="flex justify-between items-center border-b pb-2">
+                    <h2 className="text-lg font-bold text-[#071722]">Event Form</h2>
+                    <button onClick={onClose} className="p-1 rounded-full bg-gray-100 hover:bg-gray-300 transition" style={{ zIndex: 50 }}>
+                        <IoCloseOutline className="text-[#071722] text-2xl" />
+                    </button>
+                </div>
+                <label className="block text-[#071722] text-md mt-3">User ID: {userId}</label>
+                <div className="flex flex-col gap-3 mt-3">
+                    <Input label="Event ID:" name="eventId" type="text" value={eventId} callBack={handleInputs} placeholder="E-0001" className="w-full h-8 text-sm" />
+                    <Input label="Event Name:" name="eventName" type="text" value={eventName} callBack={handleInputs} placeholder="Ex: Charity Run" className="w-full h-8 text-sm" />
+                    <Input label="Description:" name="description" type="text" value={description} callBack={handleInputs} placeholder="Ex: Annual Fundraiser" className="w-full h-8 text-sm" />
+                    <Input label="Date:" name="date" type="date" value={date} callBack={handleInputs} className="w-full h-8 text-sm" />
+                    <Input label="Time:" name="time" type="time" value={time} callBack={handleInputs} className="w-full h-8 text-sm" />
+                    <Input label="Location:" name="location" type="text" value={location} callBack={handleInputs} placeholder="Ex: New York" className="w-full h-8 text-sm" />
+                </div>
+                <div className="flex flex-wrap justify-center gap-3 mt-4">
+                    <CustomButton borderColor="blue" bgColor="white" hoverColor="blue" textColor="blue" textHoverColor="white" text="Save" onClick={saveEvent} />
+                    <CustomButton borderColor="#59AE4B" bgColor="white" hoverColor="#59AE4B" textColor="#59AE4B" textHoverColor="white" text="Update" onClick={updateEvent} />
+                    <CustomButton borderColor="#D75555" bgColor="white" hoverColor="#D75555" textColor="#D75555" textHoverColor="white" text="Delete" onClick={deleteEvent} />
+                </div>
+            </motion.div>
+        </div>
     );
 }
 

@@ -1,8 +1,9 @@
 import CustomButton from "../../component/input/custom-button.tsx";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 import {FaEye, FaPaw} from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
+import EventForm from "../form/EventForm.tsx";
 
 interface EventData {
     EventID: string;
@@ -17,6 +18,8 @@ interface EventProps {
 }
 
 function ViewPetEvent({ data }: EventProps) {
+    const [isOpen, setIsOpen] = useState(false);
+
     const navigate = useNavigate();
 
     const handleManage = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -91,9 +94,10 @@ function ViewPetEvent({ data }: EventProps) {
                     textColor="#59AE4B"
                     textHoverColor="white"
                     text={<><MdEvent className="inline-block mr-1" /> Event</>}
-                    onClick={handleManage}
+                    onClick={() => setIsOpen(true)} // Open the popup
                 />
             </div>
+            <EventForm isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
     );
 }
