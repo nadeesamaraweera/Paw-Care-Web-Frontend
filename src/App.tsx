@@ -16,6 +16,8 @@ import ViewDonation from "./view/detail-view/ViewDonation.tsx";
 import DonationForm from "./view/form/DonationForm.tsx";
 import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
 import ComplaintForm from "./view/form/ComplaintForm.tsx";
+import LostAndFoundForm from "./view/form/LostAndFoundForm.tsx";
+import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
 
 function App() {
 
@@ -176,6 +178,137 @@ function App() {
         }
     ];
 
+    const LostData = [
+        {
+            title: "Lost Golden Retriever",
+            img: "src/assets/golden_retriever.png",
+            id: "L-0001",
+            petId: "P-0001",
+            petName: "Rex",
+            location: "Central Park, NY",
+            date: "2024-02-10",
+        },
+        {
+            title: "Lost Beagle",
+            img: "src/assets/beagle.png",
+            id: "L-0002",
+            petId: "P-0002",
+            petName: "Max",
+            location: "Brooklyn, NY",
+            date: "2024-02-11",
+        },
+        {
+            title: "Lost Labrador",
+            img: "src/assets/labrador.png",
+            id: "L-0003",
+            petId: "P-0003",
+            petName: "Tom",
+            location: "San Francisco, CA",
+            date: "2024-02-12",
+        },
+        {
+            title: "Lost Poodle",
+            img: "src/assets/poodle.png",
+            id: "L-0004",
+            petId: "P-0004",
+            petName: "Jerry",
+            location: "Los Angeles, CA",
+            date: "2024-02-13",
+        },
+        {
+            title: "Lost Husky",
+            img: "src/assets/husky.png",
+            id: "L-0005",
+            petId: "P-0005",
+            petName: "Spike",
+            location: "Seattle, WA",
+            date: "2024-02-14",
+        },
+        {
+            title: "Lost German Shepherd",
+            img: "src/assets/german_shepherd.png",
+            id: "L-0006",
+            petId: "P-0006",
+            petName: "Scooby",
+            location: "Austin, TX",
+            date: "2024-02-15",
+        },
+        {
+            title: "Lost Dachshund",
+            img: "src/assets/dachshund.png",
+            id: "L-0007",
+            petId: "P-0007",
+            petName: "Rover",
+            location: "Chicago, IL",
+            date: "2024-02-16",
+        },
+        {
+            title: "Lost Bulldog",
+            img: "src/assets/bulldog.png",
+            id: "L-0008",
+            petId: "P-0008",
+            petName: "Bruno",
+            location: "Miami, FL",
+            date: "2024-02-17",
+        },
+        {
+            title: "Lost Chihuahua",
+            img: "src/assets/chihuahua.png",
+            id: "L-0009",
+            petId: "P-0009",
+            petName: "Coco",
+            location: "Houston, TX",
+            date: "2024-02-18",
+        },
+        {
+            title: "Lost Border Collie",
+            img: "src/assets/border_collie.png",
+            id: "L-0010",
+            petId: "P-0010",
+            petName: "Buddy",
+            location: "Denver, CO",
+            date: "2024-02-19",
+        },
+        {
+            title: "Lost Shiba Inu",
+            img: "src/assets/shiba_inu.png",
+            id: "L-0011",
+            petId: "P-0011",
+            petName: "Milo",
+            location: "Las Vegas, NV",
+            date: "2024-02-20",
+        },
+        {
+            title: "Lost Pug",
+            img: "src/assets/pug.png",
+            id: "L-0012",
+            petId: "P-0012",
+            petName: "Luna",
+            location: "Boston, MA",
+            date: "2024-02-21",
+        },
+        {
+            title: "Lost Cocker Spaniel",
+            img: "src/assets/cocker_spaniel.png",
+            id: "L-0013",
+            petId: "P-0013",
+            petName: "Bailey",
+            location: "San Diego, CA",
+            date: "2024-02-22",
+        },
+        {
+            title: "Lost Rottweiler",
+            img: "src/assets/rottweiler.png",
+            id: "L-0014",
+            petId: "P-0014",
+            petName: "Rocky",
+            location: "New Orleans, LA",
+            date: "2024-02-23",
+        },
+    ];
+
+
+
 
 
 
@@ -195,6 +328,8 @@ function App() {
                 <Route path="/donation_form" element={<DonationForm/>}/>
                 <Route path="/view_complaint" element={<ViewComplaint data={data}/>}/>
                 <Route path="/complaint_form" element={<ComplaintForm/>}/>
+                <Route path="/view_lost" element={<ViewLostAndFound list={LostData}/>}/>
+                <Route path="/lost_form" element={<LostAndFoundForm/>}/>
 
 
 
